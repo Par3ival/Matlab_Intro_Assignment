@@ -68,7 +68,7 @@ while (strcmp(strResponse,'e')~=1)
 
     strResponse = input('Chose an option from the above list: ', 's');
 end
-
+clc
 
 
 
