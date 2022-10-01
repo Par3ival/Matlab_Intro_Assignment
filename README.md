@@ -22,6 +22,7 @@ This repo is for aggregating tests, programs and results that have been carried 
 ## Section A - FIR Filtering WAV Files
 
 This section of the project is covered by **`caseA_FIR.m`**. This function/module iterates through **`listData.txt`** row by row to find each .wav file and then perform the relevant filtering calculations using a pre-defined impulse response for the filter. The resulting, filtered, .wav files are then saved into a separate location wavFilt for later use by other sections of the project.
+
 The user is also able to select what graphs they would like to view before starting the function. This allows for the selection of: an overlayed graph, tiled graphs or no output graphs. This is done to show to the user the effect of using the specified FIR filter on input signal **`MCPM0/SA1.wav`**. Along with this the function displays a magnitude frequency response curve to demonstrate visually the FIR filter in use.
 
 
