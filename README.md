@@ -34,6 +34,8 @@ The user is also able to select what graphs they would like to view before start
 
 ## Section E - Text Based User Interface
 
+
+*Landing Text Interface*
 ```
 =============================================================
 Welcome to Group 1's Data Processing Program
@@ -46,3 +48,14 @@ Press e => exit program
 =============================================================
 Chose an option from the above list: 
 ```
+
+*FIR Selection Interface*
+```
+=============================================================
+Press a => Overlayed graphs 
+Press b => Tiled graphs (Separate)
+Press   => Selecting nothing will ignore graph generation
+=============================================================
+Please input graphing choice: 
+```
+
