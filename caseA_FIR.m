@@ -44,7 +44,7 @@ comparisonPath = 'MCPM0\SA1';
 %=========================================================================%
 %  Define the FIR filter coefficients
 firCoef = [-0.8, 0.24, 0.4, 0.4, 0.16, -0.24, 0.08];
-impulse_appended = [firCoef zeros(1,254)];
+impulse_appended = [firCoef zeros(1,249)];
 nCoef = length(firCoef);
 
 FIR_FFT = fft(impulse_appended);
