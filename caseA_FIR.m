@@ -1,4 +1,4 @@
-function [] = caseA_FIR(listTextFileIn, graphicalOutput)
+function [fileListOutput] = caseA_FIR(listTextFileIn, graphicalOutput)
 %CASEA_FIR This function will filter a series of input .wav files.
 %{
 %=========================================================================%
@@ -141,4 +141,6 @@ while (strcmp(inputFileList(index).FilePath,'.')~=1)
     inputFileList(index).FilePath = fscanf(fileID, '%s', 1);
 
 end
+
+fileListOutput = inputFileList;
 
