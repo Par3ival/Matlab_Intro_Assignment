@@ -142,5 +142,6 @@ while (strcmp(inputFileList(index).FilePath,'.')~=1)
 
 end
 
+fclose(fileID);
 fileListOutput = inputFileList;
 
