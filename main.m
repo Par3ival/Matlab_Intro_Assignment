@@ -2,6 +2,7 @@
 %=========================================================================%
  @name Introductory Module Lab Assignment
  @Date 30/09/22 (Original)
+       01/10/22 (Last Updated)
 
  @details This module handles the text based UI and directing to the
           relevant function to handle the user request. 
@@ -35,7 +36,7 @@ while (strcmp(strResponse,'e')~=1)
             disp('Press   => Selecting nothing will ignore graph generation');
             disp("=============================================================");
             strResponseGraph = input('Please input graphing choice: ', 's');
-            caseA_FIR('listData.txt', strResponseGraph)
+            listDataStruct = caseA_FIR('listData.txt', strResponseGraph);
         
         %Extract Segments of 'aa' and 's' from a .wav file
         case 'b'
