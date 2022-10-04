@@ -2,7 +2,6 @@
 Introductory Matlab Assignment for Birmingham Uni Masters. 
 Date: September 2022
 
-This repo is for aggregating tests, programs and results that have been carried out by The Buoys.
 
 1. [User Selection a: FIR Filtering of .wav Files](#section-a---fir-filtering-wav-files)
     - Last Updated 01/10/2022
