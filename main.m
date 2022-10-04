@@ -39,7 +39,7 @@ while (strcmp(strResponse,'e')~=1)
         
         %Extract Segments of 'aa' and 's' from a .wav file
         case 'b'
-            caseB_Segs();
+            [segOrig_phS, segOrig_phAA] = caseB_Segs("listData.txt");
 
         %Calculate the energy in a specified frequency region. Specified
         %via case b.
