@@ -40,10 +40,13 @@ while (strcmp(strResponse,'e')~=1)
         
         %Extract Segments of 'aa' and 's' from a .wav file
         case 'b'
-            [segOrig_phS, segOrig_phAA] = caseB_Segs("listData.txt");
+            if exist('listDataStruct','var') == 0
+                listDataStruct = caseA_FIR('listData.txt', 'b');
+            end
+            [segOrig_phS, segOrig_phAA] = caseB_Segs(listDataStruct);
 
         %Calculate the energy in a specified frequency region. Specified
-        %via case b.
+        % via case b.
         case 'c'
             caseC_Energy();
 
