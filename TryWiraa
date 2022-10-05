@@ -88,7 +88,7 @@ clear;
                     legend('Original Waveform', 'Filtered Waveform');
                     set(gcf,'position',[800,300,800,300]);
                         
-                    figure('Name','Segment Spectrum MDPK0/SA1.wav_IY');
+                    figure('Name','Segment Spectrum MDPK0/SA1.wav_AA');
                     specSegOrigphAA = abs(fft(segOrigphAA(indRowMDPK0_SA1,1:200)));
                     specSegFiltphAA = abs(fft(segFiltphAA(indRowMDPK0_SA1,1:200)));
                     f = FsIn * (1:200)/200;
@@ -124,3 +124,49 @@ clear;
             segFiltphS = segFiltphS ./ max(abs(segFiltphS));
             
             save('segAllData.mat',"segOrigphAA","segFiltphAA","segOrigphS","segFiltphS");
+
+load('segAllData.mat');
+            
+% convert frequency to index
+ind1A = round(width(segOrigphAA)*(0.4/8.0));
+ind2A = round(width(segOrigphAA)*(1.6/8.0));
+ind1B = round(width(segOrigphAA)*(2.4/8.0));
+ind2B = round(width(segOrigphAA)*(4.0/8.0));
+            
+% DFT, calculate region A
+for indRow = 1:height(segOrigphAA)
+    XAA = abs(fft(segOrigphAA(indRow,[1:width(segOrigphAA)])));
+    [enRegAB_orig_phAA(indRow,1)] = 10*log10(aveEnFn(ind1A, ind2A, XAA));
+end
+for indRow = 1:height(segOrigphS)
+    XS = abs(fft(segOrigphS(indRow,[1:width(segOrigphS)])));
+end
+            
+% region B
+for indRow = 1:height(segOrigphAA)
+    AA = abs(fft(segOrigphAA(indRow,[1:width(segOrigphAA)])));
+    [enRegAB_orig_phAA(indRow,2)] = 10*log10(aveEnFn(ind1B, ind2B, XAA));
+end
+for indRow = 1:height(segOrigphS)
+    XS = abs(fft(segOrigphS(indRow,[1:width(segOrigphS)])));
+    [enRegAB_orig_phS(indRow,2)] = 10*log10(aveEnFn(ind1B, ind2B, XS));
+end
+            
+% histogram AA
+figure('Name','enRegAB_orig_phAA');
+histogram(enRegAB_orig_phAA((1:height(enRegAB_orig_phAA)),1),15);
+hold on; histogram(enRegAB_orig_phAA((1:height(enRegAB_orig_phAA)),2),15);
+hold off;
+xlabel('aveEn(dB)');
+legend('Region A', 'Region B');
+            
+% histogram S
+figure('Name','enRegAB_orig_phS');
+histogram(enRegAB_orig_phS((1:height(enRegAB_orig_phS)),1),15);
+hold on; histogram(enRegAB_orig_phS((1:height(enRegAB_orig_phS)),2),15);
+hold off;
+xlabel('aveEn(dB)');
+legend('Region A', 'Region B');
+            
+save('aveEnAllData.mat',"enRegAB_orig_phAA","enRegAB_orig_phS");
+
