@@ -170,3 +170,9 @@ legend('Region A', 'Region B');
             
 save('aveEnAllData.mat',"enRegAB_orig_phAA","enRegAB_orig_phS");
 
+function[aveEn] = aveEnFn(ind1, ind2, X)
+    aveEn = 0;
+    for k = ind1:ind2
+    aveEn = aveEn + (X(1,k)^2/(ind2-ind1+1));
+    end
+end
