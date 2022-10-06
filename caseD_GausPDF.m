@@ -1,12 +1,13 @@
 function [] = caseD_GausPDF()
 
+    % nested function to reduce duplicated code
     function p = gaus(enOrigRegAB,zone)
-    x = sort(enOrigRegAB(:,zone));
-    mu = mean(x);
-    sigma = sqrt(var(x));
-    f = exp(-0.5*(((x-mu)/sigma).^2));
-    denom = sqrt(2*pi*sigma^2);
-    p = {x,f/denom};
+    x = sort(enOrigRegAB(:,zone));     % smallest to largest
+    mu = mean(x);                      % mean of x????
+    sigma = sqrt(var(x));              % variance of x????
+    f = exp(-0.5*(((x-mu)/sigma).^2)); % 2nd half of gausian equation
+    denom = sqrt(2*pi*sigma^2);        % 1st half of gausian equation
+    p = {x,f/denom};                   % store values for plotting
     end
 
 enAllData = load("enAllData.mat");

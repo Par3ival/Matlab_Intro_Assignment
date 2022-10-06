@@ -7,10 +7,10 @@ function [] = caseC_Energy()
         X = abs(fft(segOrig_ph(i,:)));           % |X(k)|
         indA = round(200*[400 1600]/8000);       % index of freq 400 and 1600
         indB = round(200*[2401 4000]/8000);      % index of freq 2400 and 4000
-        dftA = X(indA(1):indA(2));               % dft array within zoneA
-        dftB = X(indB(1):indB(2));               % dft array within zoneB
-        aveEng_A = 10*log10((1/(indA(2)-indA(1)+1))*sum(dftA.^2));
-        aveEng_B = 10*log10((1/(indB(2)-indB(1)+1))*sum(dftB.^2));
+        X_A = X(indA(1):indA(2));                % X(k) array within zoneA
+        X_B = X(indB(1):indB(2));                % X(k) array within zoneB
+        aveEng_A = 10*log10((1/(indA(2)-indA(1)+1))*sum(X_A.^2));
+        aveEng_B = 10*log10((1/(indB(2)-indB(1)+1))*sum(X_B.^2));
         enOrigRegAB_ph(i,:) = [aveEng_A, aveEng_B];
     end
     end
