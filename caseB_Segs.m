@@ -33,7 +33,7 @@ phonemePath = 'labels/';
 segOrig_phS_index = 1;
 segOrig_phAA_index = 1;
 file_index = 1;
-comparePath = 'MCPM0\SA1';
+comparePath = 'MCPM0/SA1';
 firstCompare = 0;
 
 %=========================================================================%
@@ -108,5 +108,7 @@ while (strcmp(inputFileList(file_index).FilePath,'.')~=1)
         % This file has been read, move to next path.
     file_index = file_index + 1;
 end
+
+save('segAllData.mat', "segOrig_phS","segOrig_phAA")
 end
 
