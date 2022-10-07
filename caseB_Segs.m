@@ -59,10 +59,10 @@ while (strcmp(inputFileList(file_index).FilePath,'.')~=1)
 
     % All occurences of 's' and corresponding samples into array
     for s = struct_s
-        timePhStart = s.start;
-        timePhEnd = s.end;
+        timePhStart = (s.start)/10^4;
+        timePhEnd = (s.end)/10^4;
         timeSegStart_ms = timePhStart + (timePhEnd - timePhStart)/2 - 12.5;
-        sample_index = round(Fs*[timeSegStart_ms timeSegStart_ms+25e4]/10e6);
+        sample_index = round(Fs*[timeSegStart_ms timeSegStart_ms+25]/10^3);
         % 100 <- Central -> 100 or 100+1+100 gives 201 results, larger than
         % what is requested.
         sample_index(2) = sample_index(2)-1;
@@ -72,10 +72,10 @@ while (strcmp(inputFileList(file_index).FilePath,'.')~=1)
 
     % All occurences of 'aa' and corresponding samples into array
     for aa = struct_aa
-        timePhStart = aa.start;
-        timePhEnd = aa.end;
+        timePhStart = (aa.start)/10^4;
+        timePhEnd = (aa.end)/10^4;
         timeSegStart_ms = timePhStart + (timePhEnd - timePhStart)/2 - 12.5;
-        sample_index = round(Fs*[timeSegStart_ms timeSegStart_ms+25e4]/10e6);
+        sample_index = round(Fs*[timeSegStart_ms timeSegStart_ms+25]/10^3);
         % 100 <- Central -> 100 or 100+1+100 gives 201 results, larger than
         % what is requested.
         sample_index(2) = sample_index(2)-1;
