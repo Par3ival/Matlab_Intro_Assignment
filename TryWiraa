@@ -124,6 +124,8 @@ clear;
             segFiltphS = segFiltphS ./ max(abs(segFiltphS));
             
             save('segAllData.mat',"segOrigphAA","segFiltphAA","segOrigphS","segFiltphS");
+            
+%this one is case c
 
 load('segAllData.mat');
             
@@ -169,6 +171,60 @@ xlabel('aveEn(dB)');
 legend('Region A', 'Region B');
             
 save('aveEnAllData.mat',"enRegAB_orig_phAA","enRegAB_orig_phS");
+
+%this is case d
+
+load('aveEnAllData.mat');
+  % phoneme aa, calculate parameters of theGaussian PDF, region A
+            xAA = [min(enRegAB_orig_phAA,[],'all'):.01:max(enRegAB_orig_phAA,[],'all')];
+            
+            muA_AA = mean(enRegAB_orig_phAA((1:height(enRegAB_orig_phAA)),1));
+            sigmaA_AA = sqrt(var(enRegAB_orig_phAA((1:height(enRegAB_orig_phAA)),1)));
+            
+            yA_AA = normpdf(xAA,muA_AA,sigmaA_AA);
+            
+            % phoneme aa, region B
+            muB_AA = mean(enRegAB_orig_phAA((1:height(enRegAB_orig_phAA)),2));
+            sigmaB_AA = sqrt(var(enRegAB_orig_phAA((1:height(enRegAB_orig_phAA)),2)));
+            
+            yB_AA = normpdf(xAA,muB_AA,sigmaB_AA);
+            
+            % Draw graph with ideal Gaussian PDF
+            figure('Name','Phoneme AA');
+            histogram(enRegAB_orig_phAA((1:height(enRegAB_orig_phAA)),1),10,'Normalization','pdf');
+            hold on; histogram(enRegAB_orig_phAA((1:height(enRegAB_orig_phAA)),2),10,'Normalization','pdf');
+            hold on; plot(xAA,yA_AA,'b'); 
+            hold on; plot(xAA,yB_AA,'r'); hold off;
+            xlabel('aveEn(dB)');
+            legend('Region A', 'Region B');
+            
+            % phoneme s, region A
+            xS = [min(enRegAB_orig_phS,[],'all'):.01:max(enRegAB_orig_phS,[],'all')];
+            
+            muA_S = mean(enRegAB_orig_phS((1:height(enRegAB_orig_phS)),1));
+            sigmaA_S = sqrt(var(enRegAB_orig_phS((1:height(enRegAB_orig_phS)),1)));
+            
+            yA_S = normpdf(xS,muA_S,sigmaA_S);
+            
+            % phoneme s, region B
+            muB_S = mean(enRegAB_orig_phS((1:height(enRegAB_orig_phS)),2));
+            sigmaB_S = sqrt(var(enRegAB_orig_phS((1:height(enRegAB_orig_phS)),2)));
+            
+            yB_S = normpdf(xS,muB_S,sigmaB_S);
+            
+            % Draw graph
+            figure('Name','Phoneme S');
+            histogram(enRegAB_orig_phS((1:height(enRegAB_orig_phS)),1),15,'Normalization','pdf');
+            hold on; histogram(enRegAB_orig_phS((1:height(enRegAB_orig_phS)),2),15,'Normalization','pdf');
+            hold on; plot(xS,yA_S,'b'); 
+            hold on; plot(xS,yB_S,'r'); hold off;
+            xlabel('aveEn(dB)');
+            legend('Region A', 'Region B');
+            
+        otherwise
+        disp('Error, Try again');
+    end
+end
 
 function[aveEn] = aveEnFn(ind1, ind2, X)
     aveEn = 0;
