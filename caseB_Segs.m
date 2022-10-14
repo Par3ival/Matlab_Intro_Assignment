@@ -63,9 +63,6 @@ while (strcmp(inputFileList(file_index).FilePath,'.')~=1)
         timePhEnd = (s.end)/10^4;
         timeSegStart_ms = timePhStart + (timePhEnd - timePhStart)/2 - 12.5;
         sample_index = round(Fs*[timeSegStart_ms timeSegStart_ms+25]/10^3);
-        % 100 <- Central -> 100 or 100+1+100 gives 201 results, larger than
-        % what is requested.
-        sample_index(2) = sample_index(2)-1;
         segOrig_phS(segOrig_phS_index,:) = inpSigWav(sample_index(1):sample_index(2));
         segOrig_phS_index = segOrig_phS_index + 1;
     end
@@ -75,10 +72,7 @@ while (strcmp(inputFileList(file_index).FilePath,'.')~=1)
         timePhStart = (aa.start)/10^4;
         timePhEnd = (aa.end)/10^4;
         timeSegStart_ms = timePhStart + (timePhEnd - timePhStart)/2 - 12.5;
-        sample_index = round(Fs*[timeSegStart_ms timeSegStart_ms+25]/10^3);
-        % 100 <- Central -> 100 or 100+1+100 gives 201 results, larger than
-        % what is requested.
-        sample_index(2) = sample_index(2)-1;
+        sample_index = (Fs*[timeSegStart_ms timeSegStart_ms+25]/10^3);
         segOrig_phAA(segOrig_phAA_index,:) = inpSigWav(sample_index(1):sample_index(2));
         segOrig_phAA_index = segOrig_phAA_index + 1;
     end

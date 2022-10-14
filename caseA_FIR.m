@@ -18,7 +18,7 @@ function [fileListOutput] = caseA_FIR(listTextFileIn, graphicalOutput)
 
 % Open the list file containing our .wav locations
 % First define the path to the downloadable folder
-folderPath = '\dataTIMIT_labAssign2022_usedToStud\dataTIMIT_labAssign2022_usedToStud\';
+folderPath = '/dataTIMIT_labAssign2022_usedToStud/dataTIMIT_labAssign2022_usedToStud/';
 % Next find the users current path
 mainPath = pwd;
 fullPath = append(mainPath, folderPath);
@@ -35,8 +35,8 @@ inputFileList(index).FilePath = fscanf(fileID, '%s', 1);
 
 % For use later
 extension = '.wav';
-originalWavPath = 'wavOrig\';
-filteredWavPath = 'wavFilt\';
+originalWavPath = 'wavOrig/';
+filteredWavPath = 'wavFilt/';
 comparisonPath = 'MCPM0\SA1';
 
 %=========================================================================%
