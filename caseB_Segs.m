@@ -72,7 +72,7 @@ while (strcmp(inputFileList(file_index).FilePath,'.')~=1)
         timePhStart = (aa.start)/10^4;
         timePhEnd = (aa.end)/10^4;
         timeSegStart_ms = timePhStart + (timePhEnd - timePhStart)/2 - 12.5;
-        sample_index = (Fs*[timeSegStart_ms timeSegStart_ms+25]/10^3);
+        sample_index = round(Fs*[timeSegStart_ms timeSegStart_ms+25]/10^3);
         segOrig_phAA(segOrig_phAA_index,:) = inpSigWav(sample_index(1):sample_index(2));
         segOrig_phAA_index = segOrig_phAA_index + 1;
     end
