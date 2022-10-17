@@ -24,24 +24,24 @@ save('enAllData.mat', "enOrigRegAB_phS","enOrigRegAB_phAA")
 tiledlayout(1,2);
 nexttile;
 histogram(enOrigRegAB_phAA(:,1),"BinWidth",1)
-title('Energy of "aa" between 0.4kHz - 1.6kHz ');
+title('Energy of "aa" in Zones A and B');
 xlabel('Energy/dB');
 ylabel('Occurences of "aa"');
 hold on;
 histogram(enOrigRegAB_phAA(:,2),"BinWidth",1)
-title('Energy of "aa" between 2.4kHz - 4kHz ');
 xlabel('Energy/dB');
 ylabel('Occurences of "aa"');
+legend('ZoneA: 0.4kHz-1.6kHz','ZoneB: 2.4kHz-4kHz')
 nexttile;
 histogram(enOrigRegAB_phS(:,1),"BinWidth",1)
-title('Energy of "s" between 0.4kHz - 1.6kHz ');
+title('Energy of "s" in Zones A and B');
 xlabel('Energy/dB');
 ylabel('Occurences of "s"');
 hold on;
 histogram(enOrigRegAB_phS(:,2),"BinWidth",1)
-title('Energy of "s" between 2.4kHz - 4kHz ');
 xlabel('Energy/dB');
 ylabel('Occurences of "s"');
+legend('ZoneA: 0.4kHz-1.6kHz','ZoneB: 2.4kHz-4kHz')
 
 end
 
