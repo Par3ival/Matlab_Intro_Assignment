@@ -84,7 +84,7 @@ while (strcmp(inputFileList(file_index).FilePath,'.')~=1)
         %Plot the first AA and S of SA1.wav
         plot(segOrig_phAA(1,:));
         drawnow
-        title('First Occurance of Phoneme AA in SA1.wav');
+        title('First Occurance of Phoneme AA in MCPM0/SA1.wav');
         xlabel('Sample Index');
         ylabel('Amplitude');
         grid;
@@ -93,7 +93,7 @@ while (strcmp(inputFileList(file_index).FilePath,'.')~=1)
 
         plot(segOrig_phS(1,:));
         drawnow
-        title('First Occurance of Phoneme S in SA1.wav');
+        title('First Occurance of Phoneme S in MCPM0/SA1.wav');
         xlabel('Sample Index');
         ylabel('Amplitude');
         grid;
