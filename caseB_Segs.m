@@ -32,9 +32,9 @@ originalWavPath = 'wavOrig/';
 phonemePath = 'labels/';
 segOrig_phS_index = 1;
 segOrig_phAA_index = 1;
+MDPK0_SA1_ph_index = 1;
 file_index = 1;
-comparePath = 'MCPM0/SA1';
-firstCompare = 0;
+comparePath = 'MDPK0/SA1';
 
 %=========================================================================%
 % Signal Sampling Loops
@@ -65,6 +65,10 @@ while (strcmp(inputFileList(file_index).FilePath,'.')~=1)
         sample_index = round(Fs*[timeSegStart_ms timeSegStart_ms+25]/10^3);
         segOrig_phS(segOrig_phS_index,:) = inpSigWav(sample_index(1):sample_index(2));
         segOrig_phS_index = segOrig_phS_index + 1;
+        if (strcmp(comparePath,inputFileList(file_index).FilePath) == 1) && (MDPK0_SA1_ph_index==1)
+            MDPK0_SA1_ph(MDPK0_SA1_ph_index,:) = inpSigWav(sample_index(1):sample_index(2));
+            MDPK0_SA1_ph_index = MDPK0_SA1_ph_index + 1;
+        end
     end
 
     % All occurences of 'aa' and corresponding samples into array
@@ -75,34 +79,31 @@ while (strcmp(inputFileList(file_index).FilePath,'.')~=1)
         sample_index = round(Fs*[timeSegStart_ms timeSegStart_ms+25]/10^3);
         segOrig_phAA(segOrig_phAA_index,:) = inpSigWav(sample_index(1):sample_index(2));
         segOrig_phAA_index = segOrig_phAA_index + 1;
-    end
-
-    if (strcmp(comparePath,inputFileList(file_index).FilePath) == 1) && (firstCompare == 0)
-        tiledlayout(2,1);
-        nexttile;
-
-        %Plot the first AA and S of SA1.wav
-        plot(segOrig_phAA(1,:));
-        drawnow
-        title('First Occurance of Phoneme AA in MCPM0/SA1.wav');
-        xlabel('Sample Index');
-        ylabel('Amplitude');
-        grid;
-
-        nexttile;
-
-        plot(segOrig_phS(1,:));
-        drawnow
-        title('First Occurance of Phoneme S in MCPM0/SA1.wav');
-        xlabel('Sample Index');
-        ylabel('Amplitude');
-        grid;
-        firstCompare = 1;
-    end
-        % This file has been read, move to next path.
+        if (strcmp(comparePath,inputFileList(file_index).FilePath) == 1) && (MDPK0_SA1_ph_index==2)
+            MDPK0_SA1_ph(MDPK0_SA1_ph_index,:) = inpSigWav(sample_index(1):sample_index(2));
+            MDPK0_SA1_ph_index = MDPK0_SA1_ph_index + 1;
+        end
+    end       
+     % This file has been read, move to next path.
     file_index = file_index + 1;
 end
 
+%Plot the first AA and S of MDPK0/SA1.wav
+tiledlayout(2,1);
+nexttile;
+plot(MDPK0_SA1_ph(2,:));
+title('First Occurance of Phoneme AA in MDPK0/SA1.wav');
+xlabel('Sample Index');
+ylabel('Amplitude');
+grid;
+nexttile;
+plot(MDPK0_SA1_ph(1,:));
+title('First Occurance of Phoneme S in MDPK0/SA1.wav');
+xlabel('Sample Index');
+ylabel('Amplitude');
+grid;
+
 save('segAllData.mat', "segOrig_phS","segOrig_phAA")
+save('MDPK0_SA1_ph', "MDPK0_SA1_ph")
 end
 
