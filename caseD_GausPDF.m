@@ -20,12 +20,28 @@ pS_B = gaus(enAllData.enOrigRegAB_phS,2);
 tiledlayout(2,2);
 nexttile;
 plot(pAA_A{1},pAA_A{2})
+title('Gaussian PDF Energy Modelling of "aa" in Zone A');
+xlabel('Energy/dB');
+ylabel('Gauss Distribution');
+hold on;
 nexttile;
 plot(pAA_B{1},pAA_B{2})
+title('Gaussian PDF Energy Modelling of "aa" in Zone B');
+xlabel('Energy/dB');
+ylabel('Gauss Distribution');
+hold on;
 nexttile;
 plot(pS_A{1},pS_A{2})
+title('Gaussian PDF Energy Modelling of "ss" in Zone A');
+xlabel('Energy/dB');
+ylabel('Gauss Distribution');
+hold on;
 nexttile;
 plot(pS_B{1},pS_B{2})
+title('Gaussian PDF Energy Modelling of "ss" in Zone B');
+xlabel('Energy/dB');
+ylabel('Gauss Distribution');
+hold on;
 
 end
 
