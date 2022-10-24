@@ -27,6 +27,8 @@ function [] = caseD_GausPDF()
     p = {x,f/denom};                   % store values for plotting
     end
 
+                 
+
 %  Load the energy value data from the current list entry
 enAllData = load("enAllData.mat");
 
@@ -38,8 +40,6 @@ pAA_B = gaus(enAllData.enOrigRegAB_phAA,2);
 pS_A = gaus(enAllData.enOrigRegAB_phS,1);
 % Perform gaussian PDF calculation for phoneme ('s') in region B
 pS_B = gaus(enAllData.enOrigRegAB_phS,2);
-
-save('GaussData.mat', "pAA_A","pAA_B","pS_A","pS_B")
 
 % We are going to display the  modelling of energy values graph using Gaussan PDF
 % in one figure consisted of 4 parts
